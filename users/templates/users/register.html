@@ -1,0 +1,169 @@
+{% extends "users/base.html" %}
+{% block title %} Register Page {% endblock title %}
+{% block content %}
+<style>
+    :root {
+        --healthcare-blue: #3498db;
+        --healthcare-green: #2ecc71;
+        --light-gray: #f5f6fa;
+    }
+
+    body {
+        background: linear-gradient(135deg, var(--healthcare-blue) 0%, var(--healthcare-green) 100%);
+        /* height: 100vh; */
+        margin: 0;
+        /* overflow: hidden; */
+    }
+
+    .register-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    .register-card {
+        background: white;
+        border-radius: 15px;
+        padding: 2rem;
+        width: 100%;
+        max-width: 500px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .register-header {
+        background: var(--healthcare-blue);
+        color: white;
+        padding: 1rem;
+        border-radius: 10px;
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+
+    .form-row {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .form-group {
+        flex: 1;
+    }
+
+    .form-input {
+        width: 100%;
+        padding: 0.8rem;
+        margin: 0.5rem 0;
+        border: 2px solid var(--light-gray);
+        border-radius: 8px;
+        transition: border-color 0.3s;
+    }
+
+    .form-input:focus {
+        border-color: var(--healthcare-blue);
+        outline: none;
+    }
+
+    .submit-button {
+        width: 100%;
+        padding: 0.8rem;
+        background: var(--healthcare-blue);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.3s;
+        margin: 1rem 0;
+    }
+
+    .submit-button:hover {
+        background: #2980b9;
+    }
+
+    .error-message {
+        background: #ff6b6b;
+        color: white;
+        padding: 1rem;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+    }
+
+    /* label {
+        color: #666;
+        display: block;
+        margin-bottom: 0.5rem;
+    } */
+
+    .login-link {
+        text-align: center;
+        margin-top: 1rem;
+        
+    }
+
+    .login-link a {
+        color: var(--healthcare-blue);
+    }
+</style>
+
+<div class="register-container">
+    <div class="register-card">
+        <div class="register-header">
+            <h3>Create Account</h3>
+        </div>
+
+        {% if form.errors %}
+        <div class="error-message">
+            {% for key, value in form.errors.items %}
+            <strong>{{ value }}</strong>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="form-group">
+                    <label><i class="fas fa-user"></i> First Name</label>
+                    {{ form.first_name }}
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-user"></i> Last Name</label>
+                    {{ form.last_name }}
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label><i class="fas fa-user-circle"></i> Username</label>
+                    {{ form.username }}
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-envelope"></i> Email</label>
+                    {{ form.email }}
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label><i class="fas fa-lock"></i> Password</label>
+                    {{ form.password1 }}
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-lock"></i> Confirm Password</label>
+                    {{ form.password2 }}
+                </div>
+            </div>
+
+            <button type="submit" class="submit-button">
+                <i class="fas fa-user-plus"></i> Sign Up
+            </button>
+        </form>
+        <hr>
+        <div class="login-link">
+            <a href="{% url 'login' %}">
+                Already have an account? Sign in
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock content %}</a>

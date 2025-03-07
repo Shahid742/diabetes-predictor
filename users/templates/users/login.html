@@ -1,0 +1,156 @@
+{% extends "users/base.html" %}
+{% block title %} Login Page {% endblock title %}
+{% block content %}
+<style>
+    :root {
+        --healthcare-blue: #3498db;
+        --healthcare-green: #2ecc71;
+        --light-gray: #f5f6fa;
+    }
+
+    body{
+        background: linear-gradient(135deg, var(--healthcare-blue) 0%, var(--healthcare-green) 100%);
+        /* height: 100vh; */
+        margin: 0;
+        /* overflow: hidden; */
+    }
+    .login-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+       
+    }
+
+    .login-card {
+        background: white;
+        border-radius: 15px;
+        padding: 2rem;
+        width: 100%;
+        max-width: 400px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .login-header {
+        background: var(--healthcare-blue);
+        color: white;
+        padding: 1rem;
+        border-radius: 10px;
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+
+    .form-input {
+        width: 100%;
+        padding: 0.8rem;
+        margin: 0.5rem 0;
+        border: 2px solid var(--light-gray);
+        border-radius: 8px;
+        transition: border-color 0.3s;
+    }
+
+    .form-input:focus {
+        border-color: var(--healthcare-blue);
+        outline: none;
+    }
+
+    .submit-button {
+        width: 100%;
+        padding: 0.8rem;
+        background: var(--healthcare-blue);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    .submit-button:hover {
+        background: #2980b9;
+    }
+
+    .social-login {
+        margin: 1rem 0;
+        padding: 0.8rem;
+        border: 2px solid #333;
+        border-radius: 8px;
+        text-decoration: none;
+        color: #333;
+        display: block;
+        text-align: center;
+        transition: all 0.3s;
+    }
+
+    .social-login:hover {
+        background:#333;
+        color: white;
+    }
+
+    .divider {
+        border-top: 1px solid var(--light-gray);
+        margin: 1rem 0;
+        text-align: center;
+        position: relative;
+    }
+
+    .divider span {
+        background: white;
+        padding: 0 10px;
+        color: #666;
+        position: relative;
+        top: -12px;
+    }
+</style>
+
+<div class="login-container">
+    <div class="login-card">
+        <div class="login-header">
+            <h3>Sign In</h3>
+        </div>
+
+        {% if form.errors %}
+            <div class="error-message">
+                {% for key, value in form.errors.items %}
+                    <strong>{{ value }}</strong>
+                {% endfor %}
+            </div>
+        {% endif %}
+       
+        <form method="POST">
+            {% csrf_token %}
+            <a href="{% url 'social:begin' 'github' %}" class="social-login">
+                <i class="fab fa-github"></i> Sign in with GitHub
+            </a>
+
+            <div class="divider">
+                <span>OR</span>
+            </div>
+
+            <div>
+                <label><i class="fas fa-user"></i> Username</label>
+                {{ form.username }}
+            </div>
+
+            <div>
+                <label><i class="fas fa-lock"></i> Password</label>
+                {{ form.password }}
+            </div>
+
+            <div>
+                {{ form.remember_me }}
+                <label style="color:#0e0d0d">Remember me</label>
+            </div>
+
+            <button type="submit" name="login" class="submit-button">
+                <i class="fas fa-sign-in-alt"></i> Sign in
+            </button>
+        </form>
+
+        <div class="divider"></div>
+        <div style="text-align: center;">
+            <a href="{% url 'users-register' %}" style="color: var(--healthcare-blue);">Don't have an account? Sign up</a><br>
+            <a href="{% url 'password_reset' %}" style="color: #666;">Forgot Password?</a>
+        </div>
+    </div>
+</div>
+{% endblock content %}

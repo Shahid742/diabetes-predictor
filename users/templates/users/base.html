@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!--Font awesome icons -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+    <title>{% block title %} {% endblock %} </title>
+    <style>
+        :root {
+            --healthcare-blue: #3498db;
+            --healthcare-green: #2ecc71;
+            --light-gray: #f5f6fa;
+            --primary-color: #2c6e8e;     /* Calming blue, traditional healthcare color */
+            --secondary-color: #4ca198;    /* Soft teal, represents wellness */
+            --dark-color: #2d3e50;        /* Deep navy, professional look */
+            --light-color: #f5f9fa;        /* Off-white, clean medical feel */
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            color: var(--dark-color);
+            background: linear-gradient(135deg, var(--healthcare-blue) 0%, var(--healthcare-green) 100%);
+            margin-top: 70px;
+            /* height: 100vh; */
+            /* overflow: hidden; */
+        }
+        .navbar {
+            background-color: var(--primary-color);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .navbar-brand, .nav-link {
+            color: white !important;
+        }
+        .navbar-nav {
+            flex-direction: row;
+        }
+        .navbar-nav .nav-item {
+            margin-right: 10px;
+        }
+        .nav-link:hover {
+            color: #72b5b5 !important;
+        }
+        /* @media (max-width: 991px) {
+            .navbar-nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .navbar-nav .nav-item {
+                margin-bottom: 5px;
+            }
+        } */
+    </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Diabetes Predictor</a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="{% url 'landingpage' %}">Home</a>
+                <a class="nav-link" href="{% url 'profile' %}">Dashboard</a>
+                <a class="nav-link" href="{% url 'predictor_form' %}">Predictor</a>
+                {% if user.is_authenticated %}
+                    <li class="nav-item"><a class="nav-link text-danger" href="{% url 'logout' %}" id="logout-link">Logout</a></li>
+                    <form id="logout-form" method="POST" action="{% url 'logout' %}" style="display: none;">
+                        {% csrf_token %}
+                    </form>
+                {% else %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Sign in</a></li>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+  </header>
+
+  <!--Any flash messages pop up in any page because this is the base template-->
+  {% if messages %}
+    <div class="alert alert-dismissible" role="alert">
+      {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+      {% endfor %}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  {% endif %}
+  {% block content %}{% endblock %}
+
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7HibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  <!-- A plugin for password show/hide  -->
+  <script src="https://unpkg.com/bootstrap-show-password@1.2.1/dist/bootstrap-show-password.min.js"></script>
+
+  <script>
+      document.getElementById('logout-link').addEventListener('click', function(event) {
+          event.preventDefault();
+          document.getElementById('logout-form').submit();
+      });
+  </script>
+</body>
+</html>

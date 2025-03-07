@@ -1,0 +1,390 @@
+{% extends "users/base.html" %}
+{% block title %}Profile Page{% endblock title %}
+{% block content %}
+
+<style>
+
+    :root {
+        --healthcare-blue: #3498db;
+        --healthcare-green: #2ecc71;
+        --light-gray: #f5f6fa;
+    }
+    
+.container2 {
+    width: 100%;
+    padding: 0 15px;
+    margin: 24px auto 0;
+    min-width: 90vh;
+    min-height: 100vh;
+    
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+}
+
+.col-md-8 {
+    flex: 0 0 66.666667%;
+    max-width: 66.666667%;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
+/* Card styling */
+.profile-card {
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+/* Text alignment */
+.text-center {
+    text-align: center;
+}
+
+.mb-3 {
+    margin-bottom: 1rem;
+}
+
+/* Profile picture */
+.rounded-circle {
+    border-radius: 50%;
+}
+
+.border {
+    border: 1px solid #000;
+}
+
+.shadow-sm {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.profile-pic {
+    cursor: pointer;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.profile-pic:hover {
+    transform: scale(1.1);
+}
+
+/* Form styling */
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #0e0d0d;
+}
+
+.form-content input[type="text"],
+.form-content input[type="email"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
+
+/* Alert styling */
+.alert-danger {
+    padding: 1rem;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+    border: 1px solid #007bff;
+}
+
+.btn-outline-primary {
+    background-color: transparent;
+    color: #007bff;
+    border: 1px solid #007bff;
+}
+
+.btn-lg {
+    padding: 10px 16px;
+    font-size: 1.25rem;
+}
+
+/* Flex utilities */
+.d-flex {
+    display: flex;
+}
+
+.justify-content-between {
+    justify-content: space-between;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #dee2e6;
+    margin: 1rem 0;
+}
+
+/* Modal styling */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 1000;
+}
+
+.modal-dialog {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.modal-content {
+    background-color: #fff;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.modal-header {
+    padding: 1rem;
+    border-bottom: 1px solid #dee2e6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-title {
+    margin: 0;
+    font-size: 1.25rem;
+}
+
+.modal-body {
+    padding: 1rem;
+}
+
+.shadow-lg {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+.close-btn {
+    border: none;
+    background: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0 10px;
+}
+
+.close-btn:hover {
+    color: #dc3545;
+}
+
+/* Enlargement effect for modal image */
+.enlarge-pic {
+    transition: transform 0.3s ease;
+}
+
+.enlarge-pic:hover {
+    transform: scale(1.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .col-md-8 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+.divider {
+        background: white;
+        padding: 0 10px;
+        color: #666;
+        position: relative;
+        top: -12px;
+    }
+    .prediction-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    .prediction-table th, .prediction-table td {
+        border: 1px solid #dee2e6;
+        padding: 8px;
+        text-align: center;
+    }
+    .prediction-table th {
+        background-color: #007bff;
+        color: white;
+    }
+    .prediction-table tr:nth-child(even) {
+        background-color: #f8f9fa;
+    }
+    .btn-danger {
+    background-color: #dc3545;
+    color: white;
+    border: 1px solid #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+</style>
+
+<div class="container2">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="profile-card">
+                <div class="text-center mb-3">
+                    <!-- Profile Picture -->
+                    <img id="profilePic" class="rounded-circle border shadow-sm profile-pic" 
+                         src="{{ user.profile.avatar.url }}"
+                         onclick="document.querySelector('#profileModal').style.display='block'">
+                </div>
+
+                <!-- Display Form Errors -->
+                {% if user_form.errors %}
+                    <div class="alert-danger alert-dismissible">
+                        <div id="form_errors">
+                            {% for key, value in user_form.errors.items %}
+                                <strong>{{ value }}</strong>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+
+                <!-- Profile Form -->
+                <div class="form-content">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label class="form-label"><i class="fas fa-user"></i> Username:</label>
+                            {{ user_form.username }}
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email:</label>
+                            {{ user_form.email }}
+                        </div>
+                        <div class="mb-3">
+                            <a href="{% url 'password_change' %}" class="btn btn-outline-primary">Change Password</a>
+                        </div>
+                        <hr>
+                        <div class="mb-3">
+                            <label class="form-label">Change Avatar:</label>
+                            {{ profile_form.avatar }}
+                        </div>
+                        <hr>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary btn-lg">Save Changes</button>
+                        </div>
+                    </form>
+                </div>
+
+<!-- Past Predictions Section -->
+<hr>
+<h2>Past Predictions</h2>
+{% if predictions %}
+    <form method="post" action="{% url 'delete_predictions' %}">
+        {% csrf_token %}
+        <table class="prediction-table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Gender</th>
+                    <th>Age</th>
+                    <th>Hypertension</th>
+                    <th>Heart Disease</th>
+                    <th>BMI</th>
+                    <th>HbA1c Level</th>
+                    <th>Blood Glucose</th>
+                    <th>Prediction</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for prediction in predictions %}
+                    <tr>
+                        <td>{{ prediction.created_at|date:"Y-m-d H:i" }}</td>
+                        <td>{{ prediction.gender|title }}</td>
+                        <td>{{ prediction.age }}</td>
+                        <td>{% if prediction.hypertension == 1 %}Yes{% else %}No{% endif %}</td>
+                        <td>{% if prediction.heart_disease == 1 %}Yes{% else %}No{% endif %}</td>
+                        <td>{{ prediction.bmi }}</td>
+                        <td>{{ prediction.HbA1c_level }}</td>
+                        <td>{{ prediction.blood_glucose_level }}</td>
+                        <td>{% if prediction.prediction == 1 %}Likely{% else %}Unlikely{% endif %}</td>
+                        <td>
+                            <input type="checkbox" name="predictions_to_delete" value="{{ prediction.id }}">
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="text-center mt-3">
+            <button type="submit" class="btn btn-danger" onclick="return confirmDelete()">Delete Selected</button>
+        </div>
+    </form>
+{% else %}
+    <p>No past predictions found.</p>
+{% endif %}
+<div class="text-center mt-3">
+    <a href="{% url 'predictor_form' %}" class="btn btn-primary">Make a New Prediction</a>
+</div>
+
+<!-- Profile Image Modal -->
+<div class="modal" id="profileModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Profile Picture</h5>
+                <button onclick="document.querySelector('#profileModal').style.display='none'" 
+                        class="close-btn">×</button>
+            </div>
+            <div class="modal-body text-center">
+                <img id="modalProfilePic" class="shadow-lg enlarge-pic" 
+                     src="{{ user.profile.avatar.url }}" 
+                     style="width: 100%; max-width: 400px; height: auto;">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function confirmDelete() {
+    var checkboxes = document.getElementsByName('predictions_to_delete');
+    var checked = false;
+    for (var i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].checked) {
+            checked = true;
+            break;
+        }
+    }
+    if (!checked) {
+        alert('Please select at least one prediction to delete.');
+        return false;
+    }
+    return confirm('Are you sure you want to delete the selected predictions?');
+}
+</script>
+{% endblock content %}

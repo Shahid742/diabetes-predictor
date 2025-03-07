@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f0f8ff;
+        }
+        .card {
+            background-color: #ffffff;
+            border: 2px solid transparent;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            transition: border 0.3s ease-in-out;
+        }
+        .card:hover {
+            border: 2px solid #ff00ff;
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="container text-center mt-5">
+        <div class="card shadow-sm p-3 mb-5 bg-white rounded" style="box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);">
+            <div class="card-body">
+                <h1 class="mb-4">Prediction Result</h1>
+                <p class="card-text">{{ result }}.</p>
+
+                {% if result == "The individual is likely to have diabetes in the near future." %}
+                    <div class="alert alert-danger" role="alert">
+                        <h4 class="alert-heading">Precautions & Measures:</h4>
+                        <p>1. Consult a doctor immediately.</p>
+                        <p>2. Follow a strict diet plan.</p>
+                        <p>3. Exercise regularly.</p>
+                        <p>4. Monitor your blood sugar levels regularly.</p>
+                    </div>
+                {% else %}
+                    <div class="alert alert-success" role="alert">
+                        <h4 class="alert-heading">Tips for Staying Healthy:</h4>
+                        <p>1. Maintain a balanced diet.</p>
+                        <p>2. Engage in regular physical activity.</p>
+                        <p>3. Get enough sleep.</p>
+                        <p>4. Manage stress effectively.</p>
+                    </div>
+                {% endif %}
+                
+                <a href="{% url 'predictor_form' %}" class="btn btn-primary mt-3">Try Again</a>
+                <a href="{% url 'profile' %}" class="btn btn-secondary mt-3">View Profile</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

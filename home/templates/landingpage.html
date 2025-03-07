@@ -1,0 +1,306 @@
+{% extends "users/base2.html" %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Prediction App</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        
+        .hero {
+            height: 80vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://img.freepik.com/premium-photo/background-diabetic-disease-concept-with-copy-space-world-diabetes-day-banner_132254-879.jpg?w=1380');
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+        .hero h1 {
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero p {
+        font-size: 1.5rem;
+        margin-bottom: 30px;
+    }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: #2c9bb0;
+        }
+        .btn-primary {
+            background-color: #43b3ae;
+            border-color: #43b3ae;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        .btn-primary:hover {
+            background-color: #2c9bb0;
+            border-color: #2c9bb0;
+        }
+        .card {
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: white;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px 0;
+        }
+        footer p {
+            margin: 0;
+        }
+        .social-icon {
+        color: white;
+        margin-right: 15px;
+        font-size: 1.5rem;
+        transition: color 0.3s ease;
+    }
+
+        .social-icon:hover {
+        color: #4CAF50;
+    }
+    .btn-explore {
+        background-color: #29abe2;
+        color: white;
+        padding: 15px 40px;
+        border-radius: 30px;
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+    }
+
+    .btn-explore:hover {
+        background-color: rgb(84, 198, 255);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(76, 135, 175, 0.3);
+        color: #ffffff;
+    }
+
+        .form-control {
+            border-radius: 5px;
+        }
+        .btn-light {
+            background-color: #29abe2;
+            color: white;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .btn-light:hover {
+            background-color: #2c9bb0;
+        }
+        section {
+            padding: 60px 0;
+        }
+        .text-center {
+            text-align: center;
+        }
+        #contact {
+            background-color: #f8f9fa;
+            padding: 60px 0;
+        }
+        #contact h2 {
+            color: #2c9bb0;
+            margin-bottom: 30px;
+        }
+        #contact form {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        #contact .form-control {
+            border: 2px solid #e9ecef;
+            padding: 12px;
+            margin-bottom: 20px;
+        }
+        #contact .form-control:focus {
+            border-color: #43b3ae;
+            box-shadow: 0 0 0 0.2rem rgba(67, 179, 174, 0.25);
+        }
+        #contact .btn-light {
+            background-color: #43b3ae;
+            padding: 12px 30px;
+            font-weight: 600;
+            width: 100%;
+        }
+        #contact .btn-light:hover {
+            background-color: #2c9bb0;
+            transform: translateY(-2px);
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand navbar-dark fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="#">Diabetes Predictor</a>
+                <div class="navbar-nav ms-auto">
+                    <a class="nav-link" href="#home">Home</a>
+                    <a class="nav-link" href="{% url 'learn_more'%}">About</a>
+                    <a class="nav-link" href="#features">Features</a>
+                    <a class="nav-link" href="{% url 'profile' %}">Dashboard</a>
+                    <a class="nav-link" href="#contact">Contact</a>
+                    
+                    <a class="nav-link" href="{% url 'predictor_form' %}">Predictor</a>
+                    {% if user.is_authenticated %}
+                       
+                    {% else %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Sign in</a></li>
+                    {% endif %}
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero text-center">
+            <div class="container">
+                <h1 class="display-4">Predict Your Diabetes Risk</h1>
+                <p class="lead">Our Website uses advanced machine learning algorithms to predict your risk of diabetes. Get started now to take control of your health.</p>
+                <a href="{% url 'predictor_form' %}" class="btn btn-explore">Get Started</a>
+            </div>
+        </section>
+
+        <section id="about" class="py-5">
+            <div class="container">
+                <h2 class="text-center mb-4">About Our Website</h2>
+                <p class="text-center">Our diabetes prediction Website uses data from thousands of patients to accurately predict the risk of diabetes. By entering some basic information, you can get a prediction in seconds. Empowering individuals with AI-driven diabetes risk assessment.</p>
+                <div class="container mt-5">
+                    <h2>Who We Are</h2>
+                    <p>Welcome to <b>Diabetes Predictor</b>, a cutting-edge web application designed to help users assess their risk of diabetes using advanced machine learning technology.</p>
+            
+                    <h2>Our Vision</h2>
+                    <p>Diabetes is a global health concern affecting millions worldwide. Our vision is to empower individuals with knowledge and tools to take proactive steps in managing their health.</p>
+                    
+                    <h2>How Our System Works</h2>
+                    <ul>
+                        <li>Users enter key health parameters such as <b>age, BMI, glucose levels, and blood pressure</b>.</li>
+                        <li>Our <b>AI-based predictive model</b>, trained on over 100,000 real-world data samples, analyzes the input.</li>
+                        <li>Within seconds, users receive a <b>detailed risk assessment</b> along with potential lifestyle recommendations.</li>
+                    </ul>
+            
+                    <h2>Why Choose Us?</h2>
+                    <ul>
+                        <li><b>AI-Powered Accuracy:</b> Built using TensorFlow and Django for reliable predictions.</li>
+                        <li><b>User-Friendly Interface:</b> Simple and intuitive design.</li>
+                        <li><b>Secure & Private:</b> No personal health data is stored.</li>
+                        <li><b>Completely Free:</b> A tool available for everyone.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="py-5 bg-light">
+            <div class="container">
+                <h2 class="text-center mb-5">Features</h2>
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="text-center">
+                            <div class="feature-icon mb-3">
+                                <i class="fas fa-user-friends"></i>
+                            </div>
+                            <h3>Easy to Use</h3>
+                            <p>Simply input your data and get your prediction instantly.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="text-center">
+                            <div class="feature-icon mb-3">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h3>Accurate Predictions</h3>
+                            <p>Our model is trained on real-world data to provide reliable results.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="text-center">
+                            <div class="feature-icon mb-3">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <h3>Privacy First</h3>
+                            <p>We prioritize your privacy and never share your data with third parties.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="mb-5" data-aos="fade-up" data-aos-delay="200">
+            <iframe style="border:0; width: 100%; height: 370px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d16532.59662737191!2d75.90155120536004!3d17.619933348889457!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc5d756413f8cf1%3A0x6c921d22e64d10a8!2sDHB%20SONI%20COLLEGE%2C%20SOLAPUR!5e0!3m2!1sen!2sin!4v1739592116389!5m2!1sen!2sin" frameborder="0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+        <section id="contact" >
+            <div class="container text-center">
+                <h2>Contact Us</h2>
+                <p>Have questions? Get in touch with us.</p>
+                <form class="w-50 mx-auto" action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="1b911c52-d019-46e8-ac4d-f89ad28b4435">
+                    <input type="text" class="form-control my-2" name="name" placeholder="Your Name" required>
+                    <input type="email" class="form-control my-2" name="email" placeholder="Your Email" required>
+                    <textarea class="form-control my-2" name="message" placeholder="Your Message" required></textarea>
+                    <input type="hidden" name="redirect" value="https://web3forms.com/success">
+                    <button type="submit" class="btn btn-light">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- <footer class="py-4 text-center">
+        <div class="container">
+            <p>&copy; 2024 Created By Shahid Mulani</p>
+            <p>Contact @: shahidmulani7756@gmail.com</p>
+        </div>
+    </footer> -->
+
+    <footer class="py-4 text-center">
+        <div class="container">
+           
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                </div>
+                <div class="col-md-6 text-md-right">
+                    <h4>Follow Us</h4>
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-12 text-center">
+                    <p>&copy; 2024 Created By Shahid Mulani</p>
+                    <p>Contact @: shahidmulani7756@gmail.com</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('logout-link').addEventListener('click', function(event) {
+            event.preventDefault();
+            document.getElementById('logout-form').submit();
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+{% endblock content %}

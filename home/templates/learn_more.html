@@ -1,0 +1,168 @@
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learn More - Diabetes Prediction</title>
+
+  <style>
+    /* Global Styles */
+    /* * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    } */
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f9f9f9;
+    }
+
+    .container2 {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Header Styles */
+    header {
+      background-color: #3498db;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      border-radius: 10px 10px 0 0;
+    }
+
+    header h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    /* Section Styles */
+    section {
+      padding: 20px;
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    section h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .prediction-model {
+      background-color: #c9e4ca;
+    }
+
+    .prediction-model h2 {
+      color: #2ecc71;
+    }
+
+    .diabetes-threat {
+      background-color: #f7cac9;
+    }
+
+    .diabetes-threat h2 {
+      color: #e74c3c;
+    }
+
+    .call-to-action {
+      background-color: #87ceeb;
+    }
+
+    .call-to-action h2 {
+      color: #3498db;
+    }
+
+    /* Button Styles */
+    .btn {
+      background-color: #4c667d;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background-color: #99b4cb;
+    }
+
+    /* Footer Styles */
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+      border-radius: 0 0 10px 10px;
+    }
+
+    /* Medical Icons */
+    .medical-icon {
+      font-size: 24px;
+      margin-right: 10px;
+    }
+
+    .medical-icon-heart {
+      color: #e74c3c;
+    }
+
+    .medical-icon-stethoscope {
+      color: #2ecc71;
+    }
+
+    .medical-icon-medkit {
+      color: #9b59b6;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Understanding Our Diabetes Prediction System</h1>
+  </header>
+
+  <main class="container2">
+    <section class="prediction-model">
+      <h2>How Does Our Prediction Model Work?</h2>
+      <p>Our system is powered by machine learning algorithms trained on a dataset of over 100,000 patients. It takes into account several factors like:</p>
+      <ul>
+        <li><i class="medical-icon medical-icon-heart"></i> Blood Glucose Levels</li>
+        <li><i class="medical-icon medical-icon-stethoscope"></i> Insulin Levels</li>
+        <li><i class="medical-icon medical-icon-medkit"></i> Body Mass Index (BMI)</li>
+        <li>Age, Genetics, and Lifestyle Factors</li>
+      </ul>
+      <p>The model uses TensorFlow and is constantly updated to improve its accuracy. Once you input your details, the system calculates the probability of diabetes using statistical analysis and pattern recognition.</p>
+    </section>
+
+    <section class="diabetes-threat">
+      <h2>The Growing Threat of Diabetes</h2>
+      <p>Diabetes is a global health crisis. Here are some alarming facts:</p>
+      <ul>
+        <li>Over 537 million adults worldwide have diabetes.</li>
+        <li>1 in 10 people is diabetic, and many remain undiagnosed.</li>
+        <li>Uncontrolled diabetes can lead to heart disease, kidney failure, blindness, and nerve damage.</li>
+      </ul>
+      <p>Early detection and management are key to preventing complications. Our system helps users assess their risk and take early action.</p>
+    </section>
+
+    <section class="call-to-action">
+      <h2>Want to check your diabetes risk?</h2>
+      <a href="{% url 'predictor_form' %}" class="btn">Try Our Predictor</a>
+    </section>
+  </main>
+</body>
+</html>
+
+{% endblock content %}
