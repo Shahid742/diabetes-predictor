@@ -5,13 +5,11 @@ import pandas as pd
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .models import DiabetesPrediction
-from django.conf import settings
 
 # Load the trained model and preprocessing tools
-model_path = os.path.join(settings.BASE_DIR, "home", "Saved_Models", "diabetes_model.pkl")
-# model_path = './saved_model/diabetes_model.pkl'
-scaler_path = os.path.join(settings.BASE_DIR, "home", "Saved_Models", "scaler.pkl")
-label_encoder_path = os.path.join(settings.BASE_DIR, "home", "Saved_Models", "label_encoder.pkl")
+model_path = './home/saved_model/diabetes_model.pkl'
+scaler_path = './home/saved_model/scaler.pkl'
+label_encoder_path = './home/saved_model/label_encoder.pkl'
 
 try:
     classifier = joblib.load(model_path)
