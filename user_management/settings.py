@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 from pathlib import Path
 import dj_database_url
-from django.conf import settings
 # To keep secret keys in environment variables
 from dotenv import load_dotenv
 
@@ -22,7 +21,6 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-model_path = os.path.join(settings.BASE_DIR, "home", "Saved_Model", "diabetes_model.pkl")
 
 
 # Quick-start development settings - unsuitable for production
