@@ -7,9 +7,9 @@ from django.contrib.auth.decorators import login_required
 from .models import DiabetesPrediction
 
 # Load the trained model and preprocessing tools
-model_path = './home/saved_model/diabetes_model.pkl'
-scaler_path = './home/saved_model/scaler.pkl'
-label_encoder_path = './home/saved_model/label_encoder.pkl'
+model_path = './home/Saved_Model/diabetes_model.pkl'
+scaler_path = './home/Saved_Model/scaler.pkl'
+label_encoder_path = './home/Saved_Model/label_encoder.pkl'
 
 try:
     classifier = joblib.load(model_path)
