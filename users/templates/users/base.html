@@ -59,27 +59,42 @@
     </style>
 </head>
 <body>
-  <header>
-    <nav class="navbar navbar-expand navbar-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">Diabetes Predictor</a>
-            <div class="navbar-nav ms-auto">
-                <a class="nav-link" href="{% url 'landingpage' %}">Home</a>
-                <a class="nav-link" href="{% url 'profile' %}">Dashboard</a>
-                <a class="nav-link" href="{% url 'predictor_form' %}">Predictor</a>
-                {% if user.is_authenticated %}
-                    <li class="nav-item"><a class="nav-link text-danger" href="{% url 'logout' %}" id="logout-link">Logout</a></li>
-                    <form id="logout-form" method="POST" action="{% url 'logout' %}" style="display: none;">
-                        {% csrf_token %}
-                    </form>
-                {% else %}
-                    <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Sign in</a></li>
-                {% endif %}
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="#">Diabetes Predictor</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" 
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-2 mb-1 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'landingpage' %}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'profile' %}">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'predictor_form' %}">Predictor</a>
+                        </li>
+                        {% if user.is_authenticated %}
+                            <li class="nav-item">
+                                <a class="nav-link text-danger" href="{% url 'logout' %}" id="logout-link">Logout</a>
+                                <form id="logout-form" method="POST" action="{% url 'logout' %}" style="display: none;">
+                                    {% csrf_token %}
+                                </form>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'login' %}">Sign in</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
-  </header>
-
+        </nav>
+    </header>
   <!--Any flash messages pop up in any page because this is the base template-->
   {% if messages %}
     <div class="alert alert-dismissible" role="alert">

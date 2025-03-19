@@ -115,7 +115,6 @@
         }
         #contact h2 {
             color: #2c9bb0;
-            margin-bottom: 30px;
         }
         #contact form {
             background: white;
@@ -134,9 +133,7 @@
         }
         #contact .btn-light {
             background-color: #43b3ae;
-            padding: 12px 30px;
-            font-weight: 600;
-            width: 100%;
+            overflow: hidden;
         }
         #contact .btn-light:hover {
             background-color: #2c9bb0;
@@ -146,27 +143,7 @@
     </style>
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand navbar-dark fixed-top">
-            <div class="container">
-                <a class="navbar-brand" href="#">Diabetes Predictor</a>
-                <div class="navbar-nav ms-auto">
-                    <a class="nav-link" href="#home">Home</a>
-                    <a class="nav-link" href="{% url 'learn_more'%}">About</a>
-                    <a class="nav-link" href="#features">Features</a>
-                    <a class="nav-link" href="{% url 'profile' %}">Dashboard</a>
-                    <a class="nav-link" href="#contact">Contact</a>
-                    
-                    <a class="nav-link" href="{% url 'predictor_form' %}">Predictor</a>
-                    {% if user.is_authenticated %}
-                       
-                    {% else %}
-                        <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Sign in</a></li>
-                    {% endif %}
-                </div>
-            </div>
-        </nav>
-    </header>
+   
 
     <main>
         <section id="home" class="hero text-center">
@@ -245,28 +222,31 @@
             <iframe style="border:0; width: 100%; height: 370px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d16532.59662737191!2d75.90155120536004!3d17.619933348889457!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc5d756413f8cf1%3A0x6c921d22e64d10a8!2sDHB%20SONI%20COLLEGE%2C%20SOLAPUR!5e0!3m2!1sen!2sin!4v1739592116389!5m2!1sen!2sin" frameborder="0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
 
-        <section id="contact" >
-            <div class="container text-center">
-                <h2>Contact Us</h2>
-                <p>Have questions? Get in touch with us.</p>
-                <form class="w-50 mx-auto" action="https://api.web3forms.com/submit" method="POST">
-                    <input type="hidden" name="access_key" value="1b911c52-d019-46e8-ac4d-f89ad28b4435">
-                    <input type="text" class="form-control my-2" name="name" placeholder="Your Name" required>
-                    <input type="email" class="form-control my-2" name="email" placeholder="Your Email" required>
-                    <textarea class="form-control my-2" name="message" placeholder="Your Message" required></textarea>
+        <section id="contact" class="py-5">
+            <div class="container-fluid text-center">
+                <h2 class="mb-3">Contact Us</h2>
+                <p class="mb-4">Have questions? Get in touch with us.</p>
+                <form class="w-50 w-md-75 w-lg-50 mx-auto" action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY">
+                    <!-- you can generate the access key at web3forms.com  -->
+                    
+                    <div class="mb-3">
+                        <input type="text" class="form-control" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="mb-3">
+                        <textarea class="form-control" name="message" placeholder="Your Message" required></textarea>
+                    </div>
+                    
                     <input type="hidden" name="redirect" value="https://web3forms.com/success">
-                    <button type="submit" class="btn btn-light">Send Message</button>
+                    <button type="submit" class="btn btn-light w-100 w-sm-auto">Send Message</button>
                 </form>
             </div>
         </section>
+        
     </main>
-
-    <!-- <footer class="py-4 text-center">
-        <div class="container">
-            <p>&copy; 2024 Created By Shahid Mulani</p>
-            <p>Contact @: shahidmulani7756@gmail.com</p>
-        </div>
-    </footer> -->
 
     <footer class="py-4 text-center">
         <div class="container">
@@ -278,14 +258,15 @@
                 </div>
                 <div class="col-md-6 text-md-right">
                     <h4>Follow Us</h4>
-                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <!-- <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a> -->
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
                     <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
             <div class="row mt-4">
                 <div class="col-12 text-center">
-                    <p>&copy; 2024 Created By Shahid Mulani</p>
+                    <p>&copy; 2025 Created By Shahid Mulani </p>
                     <p>Contact @: shahidmulani7756@gmail.com</p>
                 </div>
             </div>

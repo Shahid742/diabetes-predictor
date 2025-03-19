@@ -11,13 +11,11 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 from pathlib import Path
-import dj_database_url
+
 # To keep secret keys in environment variables
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 
-load_dotenv()
-
-SECRET_KEY = os.getenv('SECRET_KEY')
+# load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -30,11 +28,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['diabetes-predictor-production.up.railway.app']
+ALLOWED_HOSTS = []
 
-CSRF_TRUSTED_ORIGINS = ['https://diabetes-predictor-production.up.railway.app']
 
 # Application definition
 
@@ -97,10 +94,7 @@ DATABASES = {
     }
 }
 
-POSTGRES_LOCALLY = True
-if POSTGRES_LOCALLY:
-    DATABASES['default'] = dj_database_url.parse(os.getenv('DATABASE_URL'))
- 
+
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
@@ -145,9 +139,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
@@ -158,8 +149,8 @@ LOGIN_URL = 'login'
 
 
 # social auth configs for github
-SOCIAL_AUTH_GITHUB_KEY = 'Ov23liG72lpr2De1T1Uo'
-SOCIAL_AUTH_GITHUB_SECRET = 'c3b7727f5fec4c7d1459269a060008609f4e932b'
+SOCIAL_AUTH_GITHUB_KEY = 'GITHUB_KEY'
+SOCIAL_AUTH_GITHUB_SECRET = 'GITHUB_SECRET'
 
 
 
@@ -172,8 +163,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'shahid6542024@gmail.com'  # Replace with your email
-EMAIL_HOST_PASSWORD = 'iqcl qaup jows zmqy'  # Replace with your app password
+EMAIL_HOST_USER = 'YOUR_EMAIL'  
+EMAIL_HOST_PASSWORD = 'YOUR_PASSWORD'  
 
 SESSION_COOKIE_AGE = 60 * 60 * 24 * 30
 
@@ -182,7 +173,3 @@ SESSION_COOKIE_AGE = 60 * 60 * 24 * 30
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-
-
-
