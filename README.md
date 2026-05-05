@@ -59,15 +59,15 @@ The diabetes prediction model is trained using the **Pima Indians Diabetes Datab
 
 ### Dataset Features
 The dataset includes the following health parameters:
-- **Pregnancies**: Number of times pregnant
-- **Glucose**: Plasma glucose concentration (2-hour fasting glucose tolerance test)
-- **Blood Pressure**: Diastolic blood pressure (mm Hg)
-- **Skin Thickness**: Triceps skin fold thickness (mm)
-- **Insulin**: 2-hour serum insulin (mu U/ml)
-- **BMI**: Body Mass Index (weight in kg/(height in m)²)
-- **DiabetesPedigreeFunction**: Diabetes pedigree function (genetic predisposition)
-- **Age**: Age in years
-- **Outcome**: Class variable (0 = no diabetes, 1 = diabetes)
+- Gender: Biological sex of the individual (e.g., female, male).
+​Age: Age of the individual in years.
+​Hypertension: Indicates if the individual has high blood pressure (0 = no hypertension, 1 = has hypertension).
+​Heart Disease: Indicates the presence of heart-related conditions (0 = no heart disease, 1 = has heart disease).
+​BMI: Body Mass Index, calculated as weight\text{ }(kg) / height\text{ }(m)^2.
+​HbA1c Level: Hemoglobin A1c level, reflecting average blood sugar over the past 2–3 months.
+​Blood Glucose Level: Amount of glucose (sugar) present in the blood at the time of testing (mg/dL).
+​Outcome: Class variable indicating the diagnosis (0 = no diabetes, 1 = diabetes).
+
 
 ### Dataset Statistics
 - **Total Records**: 768
