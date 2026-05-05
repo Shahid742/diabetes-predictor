@@ -4,9 +4,9 @@
 The Diabetes Predictor project is a web application that utilizes a combination of HTML, Python, and CSS to provide users with the ability to predict the likelihood of developing diabetes based on various health parameters. This project aims to raise awareness and assist users in taking preventative measures by analyzing their health data.
 
 ### Technology Stack
-- **HTML (66%)**: The structure of the web application is built using HTML, ensuring a user-friendly and responsive layout.
-- **Python (32.1%)**: The core logic for predicting diabetes is implemented in Python, leveraging various libraries for data analysis and machine learning.
-- **CSS (1.9%)**: Styling is managed with CSS, enhancing the visual appeal of the web interface.
+- **HTML **: The structure of the web application is built using HTML, ensuring a user-friendly and responsive layout.
+- **Python **: The core logic for predicting diabetes is implemented in Python, leveraging various libraries for data analysis and machine learning.
+- **CSS **: Styling is managed with CSS, enhancing the visual appeal of the web interface.
 
 ## Installation Instructions
 
