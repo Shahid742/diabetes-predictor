@@ -55,7 +55,7 @@ The Diabetes Predictor project is a web application that utilizes a combination 
 ## Dataset Information
 
 ### Data Source
-The diabetes prediction model is trained using the **Pima Indians Diabetes Database**, a widely-used dataset in medical machine learning research.
+The diabetes prediction model is trained using a dataset from kaggle, a widely-used dataset in medical machine learning research.
 
 ### Dataset Features
 The dataset includes the following health parameters:
