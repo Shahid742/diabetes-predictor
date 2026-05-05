@@ -85,7 +85,7 @@ heart-related conditions (0 = no heart disease, 1 = has heart disease).
    - You'll see a form with input fields for health parameters
 
 2. **Enter Your Health Information**
-   ```
+```
 Gender: Female
 Age: 80.0
 Hypertension: 0
@@ -94,8 +94,7 @@ BMI: 25.19
 HbA1c Level: 6.6
 Blood Glucose Level: 140
 Outcome: 0
-
-   ```
+```
 
 3. **Submit the Form**
    - Click the "Predict" or "Submit" button
