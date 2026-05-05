@@ -45,7 +45,8 @@ The Diabetes Predictor project is a web application that utilizes a combination 
 
 5. **Run the Application**
    ```bash
-   python app.py
+   python manage.py runserver
+
    ```
 
 6. **Access the Application**
