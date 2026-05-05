@@ -50,7 +50,7 @@ The Diabetes Predictor project is a web application that utilizes a combination 
    ```
 
 6. **Access the Application**
-   Open your web browser and navigate to `http://localhost:5000`
+   Open your web browser and navigate to `http://localhost:8000`
 
 ## Dataset Information
 
