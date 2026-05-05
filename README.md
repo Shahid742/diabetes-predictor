@@ -63,7 +63,7 @@ The dataset includes the following health parameters:
 - ​Age: Age of the individual in years.
 - ​Hypertension: Indicates if the individual has - high blood pressure (0 = no hypertension, 1 = has hypertension).
 - ​Heart Disease: Indicates the presence of 
-- heart-related conditions (0 = no heart disease, 1 = has heart disease).
+heart-related conditions (0 = no heart disease, 1 = has heart disease).
 - ​BMI: Body Mass Index, calculated as weight\text{ }(kg) / height\text{ }(m)^2.
 - ​HbA1c Level: Hemoglobin A1c level, reflecting average blood sugar over the past 2–3 months.
 - ​Blood Glucose Level: Amount of glucose (sugar) present in the blood at the time of testing (mg/dL).
@@ -86,14 +86,15 @@ The dataset includes the following health parameters:
 
 2. **Enter Your Health Information**
    ```
-   Pregnancies: 6
-   Glucose: 148
-   Blood Pressure: 72
-   Skin Thickness: 35
-   Insulin: 0
-   BMI: 33.6
-   DiabetesPedigreeFunction: 0.627
-   Age: 50
+Gender: Female
+Age: 80.0
+Hypertension: 0
+Heart Disease: 1
+BMI: 25.19
+HbA1c Level: 6.6
+Blood Glucose Level: 140
+Outcome: 0
+
    ```
 
 3. **Submit the Form**
